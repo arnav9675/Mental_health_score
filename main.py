@@ -16,7 +16,7 @@ app.add_middleware(
 
 
 
-model = joblib.load('Mental_Health_Model.pkl')
+model = joblib.load('Mental_health_model.pkl')
 top_countries = ['Other','India','USA','Canada','Australia','UK','Germany','Mexico','Turkey','France']
 #from pydentic model
 class StudentData(BaseModel):
