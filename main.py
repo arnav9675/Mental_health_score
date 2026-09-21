@@ -4,6 +4,11 @@ from fastapi import FastAPI
 from pydantic import BaseModel, Field
 from typing import Literal
 from fastapi.middleware.cors import CORSMiddleware
+from pathlib import Path
+from fastapi.responses import FileResponse
+
+BASE_DIR = Path(__file__).parent
+
 
 app= FastAPI()
 app.add_middleware(
@@ -38,11 +43,10 @@ class predictictionresponse(BaseModel):
     predicted_mental_health_score: float
 
 
-
-
 @app.get("/")
-def greet():
-    return{"Welcome"}
+def home():
+    return FileResponse(BASE_DIR / "index.html")
+
 
 @app.post("/predict",response_model=predictictionresponse)
 def predict(data: StudentData):
