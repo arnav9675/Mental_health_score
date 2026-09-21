@@ -343,7 +343,12 @@
   arc.style.strokeDasharray = arcLength;
   arc.style.strokeDashoffset = arcLength;
 
+  const apiInput = document.getElementById('api');
+  if (location.protocol.startsWith('http') && !['localhost', '127.0.0.1'].includes(location.hostname)) {
+  apiInput.value = location.origin;
+}
   const apiBase = () => apiInput.value.trim().replace(/\/+$/, '');
+
 
   function setStatus(ok, text) {
     dot.className = 'dot ' + (ok ? 'ok' : 'bad');
