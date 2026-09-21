@@ -313,7 +313,7 @@
 
     <div class="api-box">
       <label for="api">API address</label>
-      <input id="api" type="url" value="http://127.0.0.1:8000">
+      <input id="api" type="text" value="This website" readonly>
       <div class="status"><span class="dot" id="dot"></span><span id="statusText">Not checked</span></div>
     </div>
 
@@ -342,9 +342,7 @@
   const arcLength = arc.getTotalLength();
   arc.style.strokeDasharray = arcLength;
   arc.style.strokeDashoffset = arcLength;
-
-  const apiBase = () => apiInput.value.trim().replace(/\/+$/, '');
-
+  const apiBase = () => '';
   function setStatus(ok, text) {
     dot.className = 'dot ' + (ok ? 'ok' : 'bad');
     statusText.textContent = text;
