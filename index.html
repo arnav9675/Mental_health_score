@@ -348,8 +348,21 @@
   apiInput.value = location.origin;
 }
   const apiBase = () => apiInput.value.trim().replace(/\/+$/, '');
-
-
+  fetch("/predict", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+})
+.then(response => response.json())
+.then(result => {
+    console.log(result);
+    // display your result here
+})
+.catch(error => {
+    console.error("Error:", error);
+});
   function setStatus(ok, text) {
     dot.className = 'dot ' + (ok ? 'ok' : 'bad');
     statusText.textContent = text;
